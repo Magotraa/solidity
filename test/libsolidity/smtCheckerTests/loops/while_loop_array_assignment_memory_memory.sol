@@ -25,3 +25,4 @@ contract LoopFor2 {
 // ----
 // Warning 2072: (156-171): Unused local variable.
 // Warning 4984: (244-249): CHC: Overflow (resulting value larger than 2**256 - 1) might happen here.
+// Warning 4984: (270-273): CHC: Overflow (resulting value larger than 2**256 - 1) might happen here.
