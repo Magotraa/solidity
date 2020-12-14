@@ -311,6 +311,11 @@ optional<string> Predicate::expressionToString(smtutil::Expression const& _expr,
 		{
 			return {};
 		}
+		catch(invalid_argument const&)
+		{
+			return {};
+		}
+
 		// Limit this counterexample size to 1k.
 		// Some OSs give you "unlimited" memory through swap and other virtual memory,
 		// so purely relying on bad_alloc being thrown is not a good idea.
@@ -379,6 +384,10 @@ bool Predicate::fillArray(smtutil::Expression const& _expr, vector<string>& _arr
 			index = stoul(*indexStr);
 		}
 		catch (out_of_range const&)
+		{
+			return true;
+		}
+		catch (invalid_argument const&)
 		{
 			return true;
 		}

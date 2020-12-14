@@ -689,12 +689,7 @@ void SMTEncoder::endVisit(FunctionCall const& _funCall)
 		visitABIFunction(_funCall);
 		break;
 	case FunctionType::Kind::Internal:
-	case FunctionType::Kind::DelegateCall:
-	case FunctionType::Kind::BareCall:
-	case FunctionType::Kind::BareCallCode:
-	case FunctionType::Kind::BareDelegateCall:
 	case FunctionType::Kind::BareStaticCall:
-	case FunctionType::Kind::Creation:
 		break;
 	case FunctionType::Kind::KECCAK256:
 	case FunctionType::Kind::ECRecover:
@@ -740,6 +735,11 @@ void SMTEncoder::endVisit(FunctionCall const& _funCall)
 	case FunctionType::Kind::ObjectCreation:
 		visitObjectCreation(_funCall);
 		return;
+	case FunctionType::Kind::DelegateCall:
+	case FunctionType::Kind::BareCall:
+	case FunctionType::Kind::BareCallCode:
+	case FunctionType::Kind::BareDelegateCall:
+	case FunctionType::Kind::Creation:
 	default:
 		m_errorReporter.warning(
 			4588_error,
